@@ -14,7 +14,8 @@ const renderList = () => {
     ul.appendChild(todoElement);
   });
 };
-addTask = e => {
+
+addTask = (e) => {
   e.preventDefault();
   const titeTask = input.value;
   if (titeTask === "") return;
@@ -32,7 +33,7 @@ addTask = e => {
   task.querySelector("button").addEventListener("click", removeTask);
 };
 
-const removeTask = e => {
+const removeTask = (e) => {
   e.target.parentNode.remove();
   const index = e.target.parentNode.dataset.key;
   toDoList.splice(index, 1);
@@ -40,15 +41,15 @@ const removeTask = e => {
   renderList();
 };
 
-const searchTask = e => {
+const searchTask = (e) => {
   const searchText = e.target.value.toLowerCase();
 
-  const text = toDoList.filter(li =>
+  const text = toDoList.filter((li) =>
     li.textContent.toLowerCase().includes(searchText)
   );
 
   ul.textContent = "";
-  text.forEach(li => ul.appendChild(li));
+  text.forEach((li) => ul.appendChild(li));
 };
 
 input.addEventListener("input", searchTask);
